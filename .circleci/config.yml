@@ -7,7 +7,7 @@ orbs:
 jobs:
   unit_test:
     macos:
-      xcode: 13.4.1
+      xcode: 14.2.0
     # Resource class
     resource_class: macos.x86.medium.gen2
     steps:
@@ -21,14 +21,14 @@ jobs:
 
   ui_test:
     macos:
-      xcode: 13.4.1
+      xcode: 14.2.0
     resource_class: macos.x86.medium.gen2
     steps:
       - checkout
       # Preboot iOS Simulator
       - macos/preboot-simulator:
-          device: iPhone 13
-          version: "15.5"
+          device: iPhone 14
+          version: "16.2"
       - ruby/install-deps
       - run: bundle exec fastlane ui_test_all
       - store_test_results:
@@ -36,7 +36,7 @@ jobs:
 
   build_for_ui_test:
     macos:
-      xcode: 13.4.1
+      xcode: 14.2.0
     resource_class: macos.x86.medium.gen2
     steps:
       - checkout
@@ -50,13 +50,13 @@ jobs:
   ui_test_parallel:
     parallelism: 2
     macos:
-      xcode: 13.4.1
+      xcode: 14.2.0
     resource_class: macos.x86.medium.gen2
     steps:
       - checkout
       - macos/preboot-simulator:
-          device: iPhone 13
-          version: "15.5"
+          device: iPhone 14
+          version: "16.2"
       - attach_workspace:
           at: .
       - ruby/install-deps
@@ -74,7 +74,7 @@ jobs:
 
   beta:
     macos:
-      xcode: 13.4.1
+      xcode: 14.2.0
     resource_class: macos.x86.medium.gen2
     steps:
       - checkout
